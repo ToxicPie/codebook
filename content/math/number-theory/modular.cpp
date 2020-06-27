@@ -9,6 +9,7 @@ template<typename T> struct M {
 	explicit operator T() { return v; }
 	bool operator==(M b) { return v == b.v; }
 	bool operator!=(M b) { return v != b.v; }
+	M operator-() { return M(-v); }
 	M operator+(M b) { return M(v + b.v); }
 	M operator-(M b) { return M(v - b.v); }
 	M operator*(M b) { return M((__int128)v * b.v % MOD); }
