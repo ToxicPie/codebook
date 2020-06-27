@@ -1,0 +1,137 @@
+% This file contains most styling and macros used in the main file
+% NOTE: I am not good at latex at all, so you might want to file an issue or
+% pull request if anything breaks and/or is not good practice.
+
+\ProvidesPackage{codebookpkg}
+
+
+\RequirePackage{amsmath}
+\RequirePackage{fontspec}
+\RequirePackage[x11names]{xcolor}
+\RequirePackage{listings}
+\RequirePackage{fancyhdr}
+\RequirePackage{graphicx}
+\RequirePackage{titlesec}
+\RequirePackage{tocbasic}
+\RequirePackage[tocindentauto]{tocstyle}
+\RequirePackage[xetex, pdfusetitle, pdfusetitle]{hyperref}
+
+
+% package options
+\newif\ifchinese\chinesefalse
+\DeclareOption{chinese}{\chinesetrue}
+\newif\ifmono\monofalse
+\DeclareOption{mono}{\monotrue}
+\newif\ifnumbers\numbersfalse
+\DeclareOption{numbers}{\numberstrue}
+\ProcessOptions\relax
+
+\ifchinese
+    \RequirePackage[CheckSingle, CJKmath]{xeCJK}
+    \setCJKmainfont{Noto Sans CJK TC}
+    \XeTeXlinebreaklocale "zh"
+    \XeTeXlinebreakskip = 0pt plus 2pt
+\fi
+
+\ifmono
+    \setmainfont[
+        ItalicFont={Fira Code Medium},
+        BoldItalicFont={Fira Code Bold}
+    ]{Fira Code Medium}
+    \setmonofont{Fira Code Medium}
+\else
+    \setmainfont{Fira Sans}
+    \setmonofont{Fira Code Medium}
+\fi
+
+
+% so dirty but effective
+\setlength{\topmargin}{0pt}
+\setlength{\headsep}{10pt}
+\setlength{\textheight}{720pt}
+\setlength{\footskip}{20pt}
+\setlength{\voffset}{-55pt}
+\setlength{\textwidth}{545pt}
+\setlength{\marginparsep}{0pt}
+\setlength{\marginparwidth}{0pt}
+\setlength{\marginparpush}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\hoffset}{-42pt}
+\setlength{\columnsep}{15pt}
+\setlength{\columnseprule}{0pt}
+
+\titlespacing\section
+{0pt}{8pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
+\titlespacing\subsection
+{0pt}{4pt plus 4pt minus 2pt}{2pt plus 2pt minus 2pt}
+\titlespacing\subsubsection
+{0pt}{4pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+
+\definecolor{codeblue}{rgb}{0.06, 0.12, 0.80}
+\definecolor{codegreen}{rgb}{0.04, 0.50, 0.10}
+\definecolor{codeorange}{rgb}{0.96, 0.54, 0.04}
+
+\lstset{inputpath=content}
+
+\lstdefinestyle{codebook}{
+    language=C++,
+    basicstyle=\ttfamily,
+    stepnumber=1,
+    numbersep=5pt,
+    backgroundcolor=\color{white},
+    showspaces=true,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    captionpos=b,
+    breaklines=true,
+    breakatwhitespace=false,
+    escapeinside={\{\{}{\}\}},
+    morekeywords={constexpr, ll},
+    keywordstyle=\bfseries\color{codeblue},
+    commentstyle=\itshape\color{codegreen},
+    stringstyle=\color{codeorange}
+}
+
+\lstset{style=codebook}
+
+\ifnumbers
+% code line numbers
+\lstset{
+    numbers=left,
+    numberstyle=\color{gray}\ttfamily
+}
+% change some paddings to make space for numbers
+\addtolength{\columnsep}{10pt}
+\addtolength{\hoffset}{5pt}
+\addtolength{\textwidth}{-5pt}
+\fi
+
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\usetocstyle{standard}
+\renewcommand{\contentsname}{Contents}
+
+\newcommand{\team}[2]{
+	\def\@teamname{#1}
+    \def\@teaminstitution{#2}
+}
+
+% default
+\team{NCTU}{National Chiao Tung University}
+
+\title{Codebook for \@teamname}
+\author{\@teamname}
+
+\fancyhead[L]{\@teamname\ (\@teaminstitution)}
+\fancyhead[R]{Page \thepage}
+\fancyfoot[C]{{
+    \footnotesize
+    ICPC reference document for Team \@teamname\ (\@teaminstitution).
+    PDF built on \today.
+}}

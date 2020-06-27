@@ -1,0 +1,9 @@
+# local todo list
+todo.txt
+
+# testing object files
+tests/**/*.o
+tests.out
+
+# latex stuff
+tex_build
