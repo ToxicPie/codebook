@@ -6,9 +6,9 @@ template<typename T> struct M {
 		v = (-MOD <= x && x < MOD) ? x : x % MOD;
 		if (v < 0) v += MOD;
 	}
-	explicit operator T() { return v; }
-	bool operator==(M b) { return v == b.v; }
-	bool operator!=(M b) { return v != b.v; }
+	explicit operator T() const { return v; }
+	bool operator==(const M& b) const { return v == b.v; }
+	bool operator!=(const M& b) const { return v != b.v; }
 	M operator-() { return M(-v); }
 	M operator+(M b) { return M(v + b.v); }
 	M operator-(M b) { return M(v - b.v); }
