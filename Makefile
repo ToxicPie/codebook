@@ -34,7 +34,7 @@ codebook: $(TEX_FILE) $(CODE_SRC)
 tests: $(TEST_OBJ)
 	$(CXX) $(LD_FLAGS) $(TEST_OBJ) -o $(TEST_EXE)
 
-%.o: %.cpp
+%.o: %.cpp $(TEST_DEPS)
 	$(CXX) -I ./content -c $(CXX_FLAGS) $< -o $@
 
 tests/main.o: tests/main.cpp $(TEST_DEPS)
