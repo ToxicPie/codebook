@@ -8,13 +8,13 @@
 \RequirePackage{amsmath}
 \RequirePackage{fontspec}
 \RequirePackage[x11names]{xcolor}
-\RequirePackage{listings}
 \RequirePackage{fancyhdr}
 \RequirePackage{graphicx}
 \RequirePackage{titlesec}
 \RequirePackage{tocbasic}
 \RequirePackage[tocindentauto]{tocstyle}
-\RequirePackage[xetex, pdfusetitle, pdfusetitle]{hyperref}
+\RequirePackage[xetex, pdfusetitle]{hyperref}
+\RequirePackage{minted}
 
 
 % package options
@@ -22,8 +22,6 @@
 \DeclareOption{chinese}{\chinesetrue}
 \newif\ifmono\monofalse
 \DeclareOption{mono}{\monotrue}
-\newif\ifnumbers\numbersfalse
-\DeclareOption{numbers}{\numberstrue}
 \ProcessOptions\relax
 
 \ifchinese
@@ -64,50 +62,23 @@
 \titlespacing\section
 {0pt}{8pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
 \titlespacing\subsection
-{0pt}{4pt plus 4pt minus 2pt}{2pt plus 2pt minus 2pt}
+{0pt}{4pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
 \titlespacing\subsubsection
-{0pt}{4pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+{0pt}{4pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
 
 
 \definecolor{codeblue}{rgb}{0.06, 0.12, 0.80}
 \definecolor{codegreen}{rgb}{0.04, 0.50, 0.10}
 \definecolor{codeorange}{rgb}{0.96, 0.54, 0.04}
 
-\lstset{inputpath=content}
 
-\lstdefinestyle{codebook}{
-    language=C++,
-    basicstyle=\ttfamily,
-    stepnumber=1,
-    numbersep=5pt,
-    backgroundcolor=\color{white},
-    showspaces=true,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2,
-    captionpos=b,
-    breaklines=true,
-    breakatwhitespace=false,
-    escapeinside={\{\{}{\}\}},
-    morekeywords={constexpr, ll},
-    keywordstyle=\bfseries\color{codeblue},
-    commentstyle=\itshape\color{codegreen},
-    stringstyle=\color{codeorange}
+% define C++ code highlighting
+\newmintedfile[cppfile]{cpp}{
+    tabsize=2
 }
-
-\lstset{style=codebook}
-
-\ifnumbers
-% code line numbers
-\lstset{
-    numbers=left,
-    numberstyle=\color{gray}\ttfamily
+\setminted{
+    tabsize=2
 }
-% change some paddings to make space for numbers
-\addtolength{\columnsep}{10pt}
-\addtolength{\hoffset}{5pt}
-\addtolength{\textwidth}{-5pt}
-\fi
 
 
 \pagestyle{fancy}
@@ -117,13 +88,18 @@
 \usetocstyle{standard}
 \renewcommand{\contentsname}{Contents}
 
+% config commands
 \newcommand{\team}[2]{
 	\def\@teamname{#1}
     \def\@teaminstitution{#2}
 }
+\newcommand{\codetheme}[1]{
+	\usemintedstyle{#1}
+}
 
-% default
+% defaults
 \team{NCTU}{National Chiao Tung University}
+\codetheme{default}
 
 \title{Codebook for \@teamname}
 \author{\@teamname}

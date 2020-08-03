@@ -7,3 +7,6 @@ tests.out
 
 # latex stuff
 tex_build
+
+# minted cache
+_minted*
