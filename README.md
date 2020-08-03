@@ -1,6 +1,6 @@
 # ICPC Codebook for Team NCTU_A
 
-### **IMPORTANT NOTICE**: This codebook is not complete (in fact, not even near completion). Do not clone this repository. **ETA is early September, 2020.**
+### **IMPORTANT NOTICE**: This codebook is not complete (in fact, not anywhere near completion). Do not clone this repository. **ETA is early September, 2020.**
 
 
 
@@ -22,7 +22,13 @@ To re-generate the PDF file, run:
 ```
 make codebook
 ```
-You should have XeLaTeX and the fonts [Fira Code](https://github.com/tonsky/FiraCode) and [Noto Sans CJK](https://www.google.com/get/noto/) available.
+
+Here is a list of dependencies:
+
+- GNU Make
+- A TeX distribution, preferably `texlive-full`
+- [Fira Code](https://github.com/tonsky/FiraCode) and [Noto Sans CJK](https://www.google.com/get/noto/) fonts
+- Python 2.6+/3.x and the Pygments package
 
 ### Testing
 
@@ -31,6 +37,7 @@ To compile and run tests for each material, do:
 make tests
 ./tests.out
 ```
+
 The test program will indicate success or failure for each individual test.
 
 ## Modifying
