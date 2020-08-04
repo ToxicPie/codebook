@@ -13,7 +13,10 @@ void work(int n, vector<T>& a, vector<T>& rt, bool inv) {
 			}
 		}
 	}
-	if (inv) for (T minv = T(1) / T(n); T& x : a) x *= minv;
+	if (inv) {
+		T minv = T(1) / T(n);
+		for (T& x : a) x *= minv;
+	}
 }
 
 void FFT(vector<complex<double>>& a, bool inv) {
