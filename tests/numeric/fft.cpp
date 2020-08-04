@@ -12,13 +12,9 @@ using namespace std;
 using ll = long long;
 
 namespace _fft {
-    #include "../../content/math/number-theory/modular.cpp"
-    #include "../../content/numeric/fft.cpp"
+    #include <math/number-theory/modular.cpp>
+    #include <numeric/fft.cpp>
 }
-// namespace _fft {
-//     #include <math/number-theory/modular.cpp>
-//     #include <numeric/fft.cpp>
-// }
 
 namespace numeric {
     using is_equal::is_equal;

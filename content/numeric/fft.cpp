@@ -1,6 +1,3 @@
-#include <complex>
-#include <vector>
-
 template<typename T>
 void work(int n, vector<T>& a, vector<T>& rt, bool inv) {
 	for (int i = 1, r = 0; i < n; i++) {
