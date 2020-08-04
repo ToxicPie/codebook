@@ -108,11 +108,10 @@ namespace numeric {
             // fft multiplication
             int sz = 1 << (1 + __lg(m + n));
             vector<_fft::Mod> res(sz);
-            _fft::Mod root = primitive_root ^ (_MOD - 1) / sz;
-            a.resize(sz, 0); _fft::NTT(a, 0, root);
-            b.resize(sz, 0); _fft::NTT(b, 0, root);
+            a.resize(sz, 0); _fft::NTT(a, 0, primitive_root);
+            b.resize(sz, 0); _fft::NTT(b, 0, primitive_root);
             for(int i = 0; i < sz; i++) res[i] = a[i] * b[i];
-            _fft::NTT(res, 1, root);
+            _fft::NTT(res, 1, primitive_root);
 
             if(!check(orig_a, orig_b, res)) {
                 stringstream ss;

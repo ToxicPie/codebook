@@ -28,8 +28,9 @@ void FFT(vector<complex<double>>& a, bool inv) {
 	work(n, a, rt, inv);
 }
 
-void NTT(vector<Mod>& a, bool inv, Mod root) {
+void NTT(vector<Mod>& a, bool inv, Mod p_root) {
 	int n = a.size();
+	Mod root = p_root ^ (p_root.MOD - 1) / n;
 	vector<Mod> rt(n + 1, 1);
 	for (int i = 0; i < n; i++) rt[i + 1] = rt[i] * root;
 	work(n, a, rt, inv);
