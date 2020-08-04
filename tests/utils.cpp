@@ -17,9 +17,11 @@ long long randint::operator()() {
     return rnd_val(rng);
 }
 
-wrong_answer_error::wrong_answer_error(const std::string& what_arg) : std::runtime_error(what_arg) {}
+wrong_answer_error::wrong_answer_error(const std::string& what_arg)
+    : std::runtime_error(what_arg) {}
 
-assertion_error::assertion_error(const std::string& what_arg) : std::runtime_error(what_arg) {}
+assertion_error::assertion_error(const std::string& what_arg)
+    : std::runtime_error(what_arg) {}
 
 void assert(const bool& val) {
     if(!val) throw assertion_error(
@@ -28,21 +30,20 @@ void assert(const bool& val) {
 }
 
 void run_test(std::string name, test_func test, int count) {
-    // stderr is not buffered (posix)
-    std::cerr << "Running test for ";
-    std::cerr << "\033[34m\033[1m" << name << "\033[0m ... ";
+    std::cout << "Running test for ";
+    std::cout << "\033[34m\033[1m" << name << "\033[0m ... ";
     try {
         timer test_timer;
         test(count);
         auto time_used = test_timer.get();
-        std::cerr << "\033[32mAccepted: \033[0m";
-        std::cerr << count << " cases, ";
-        std::cerr << time_used << "ms\n";
+        std::cout << "\033[32mAccepted: \033[0m";
+        std::cout << count << " cases, ";
+        std::cout << time_used << "ms\n";
     } catch(wrong_answer_error& e) {
-        std::cerr << "\033[31mWrong Answer: \033[0m";
-        std::cerr << e.what() << "\n";
+        std::cout << "\033[31mWrong Answer: \033[0m";
+        std::cout << e.what() << "\n";
     } catch(assertion_error& e) {
-        std::cerr << "\033[33mAssertion Error: \033[0m";
-        std::cerr << e.what() << "\n";
+        std::cout << "\033[33mAssertion Error: \033[0m";
+        std::cout << e.what() << "\n";
     }
 }
