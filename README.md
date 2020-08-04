@@ -26,7 +26,7 @@ make codebook
 Here is a list of dependencies:
 
 - GNU Make
-- A TeX distribution, preferably `texlive-full`
+- A TeX distribution, preferably `texlive`
 - [Fira Code](https://github.com/tonsky/FiraCode) and [Noto Sans CJK](https://www.google.com/get/noto/) fonts
 - Python 2.6+/3.x and the Pygments package
 
@@ -44,7 +44,7 @@ The test program will indicate success or failure for each individual test.
 
 ### Add / Edit Code
 
-You can add or edit any file inside the `content` directory, then add to / change the sections in which they appear in `codebook.tex`. If it is not in C++, you should use `\lstinputlisting[language=your-language]{your-file}` instead.
+You can add or edit any file inside the `content` directory, then add to / change the sections in which they appear in `codebook.tex`. If it is C++, you can use `\cppfile{filename}`. If it is not in C++, you should use `\inputminted[your-language]{filename}` instead.
 
 ### Add / Edit Tests
 
