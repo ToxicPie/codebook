@@ -16,7 +16,7 @@ template<typename T> struct M {
 	M operator/(M b) { return *this * (b ^ (MOD - 2)); }
 	friend M operator^(M a, ll b) {
 		M ans(1);
-		for(; b; b >>= 1, a *= a) if(b & 1) ans *= a;
+		for (; b; b >>= 1, a *= a) if (b & 1) ans *= a;
 		return ans;
 	}
 	friend M& operator+=(M& a, M b) { return a = a + b; }
