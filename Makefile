@@ -19,6 +19,7 @@ LD_FLAGS = -static
 TEX_FILE = codebook.tex
 PDF_FILE = $(TEX_FILE:.tex=.pdf)
 TEX_BUILD_DIR = tex_build
+MINTED_CACHE_DIR = _minted-codebook
 LATEX = xelatex -shell-escape -output-directory $(TEX_BUILD_DIR)
 
 
@@ -50,4 +51,5 @@ cleantests:
 # remove codebook stuff
 cleanlatex:
 	rm $(TEX_BUILD_DIR) -rf
+	rm $(MINTED_CACHE_DIR) -rf
 	rm $(PDF_FILE) -f
