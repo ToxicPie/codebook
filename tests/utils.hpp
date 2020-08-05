@@ -9,6 +9,10 @@
 
 
 
+// global prng
+// std::random_device is pretty platform-dependent so we don't use it here
+extern std::mt19937_64 global_rng;
+
 // useful structs
 struct timer {
     std::chrono::time_point<std::chrono::steady_clock> start;
@@ -18,8 +22,6 @@ struct timer {
 };
 
 struct randint {
-    std::random_device dev;
-    std::mt19937 rng;
     std::uniform_int_distribution<long long> rnd_val;
     randint() = delete;
     randint(long long l, long long r);
@@ -27,7 +29,8 @@ struct randint {
 };
 
 // is_equal functions: check if two values x and y are equal
-// for floating points: returns true if error between x and y is small enough
+// for floating points / std::complex<floating point>s:
+//     returns true if error between x and y is small enough
 // for other types / classes with ==: returns x == y
 // for all other types: unsupported
 namespace is_equal {
@@ -58,8 +61,6 @@ namespace is_equal {
     constexpr bool is_equal(const T& x, const U& y) {
         return x == y;
     }
-
-    static_assert(is_equal(24036.0, 8012.0 * 3.0), "error");
 }
 
 // exception classes
@@ -77,4 +78,12 @@ void assert(const bool& val);
 // test function type
 using test_func = std::function<void(int)>;
 
+// runs a test with given name and iterations
 void run_test(std::string name, test_func test, int count);
+
+// initializes stuff
+void init();
+
+// util functions
+template<typename T>
+void shuffle(std::vector<T>& v);

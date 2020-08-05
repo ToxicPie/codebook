@@ -1,6 +1,8 @@
 #include "utils.hpp"
 
 
+std::mt19937_64 global_rng;
+
 timer::timer() { reset(); }
 void timer::reset() {
     start = std::chrono::steady_clock::now();
@@ -12,9 +14,9 @@ long timer::get() {
     ).count();
 }
 
-randint::randint(long long l, long long r) : dev(), rng(dev()), rnd_val(l, r) {}
+randint::randint(long long l, long long r) : rnd_val(l, r) {}
 long long randint::operator()() {
-    return rnd_val(rng);
+    return rnd_val(global_rng);
 }
 
 wrong_answer_error::wrong_answer_error(const std::string& what_arg)
@@ -46,4 +48,16 @@ void run_test(std::string name, test_func test, int count) {
         std::cout << "\033[33mAssertion Error: \033[0m";
         std::cout << e.what() << "\n";
     }
+}
+
+void init() {
+    // initialize rng
+    auto seed = std::chrono::high_resolution_clock::now()
+        .time_since_epoch().count();
+    global_rng.seed(seed);
+}
+
+template<typename T>
+void shuffle(std::vector<T>& v) {
+    std::shuffle(v.begin(), v.end(), global_rng);
 }
