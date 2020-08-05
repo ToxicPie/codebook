@@ -4,6 +4,7 @@ CODE_SRC = $(shell find ./content -type f -name '*.cpp')
 TEST_SRC = $(shell find ./tests -type f -name '*.cpp')
 TEST_OBJ = $(TEST_SRC:.cpp=.o)
 TEST_DEPS = $(shell find ./tests -type f -name '*.hpp')
+TEST_DEPS := $(filter-out tests/tests.hpp, $(TEST_DEPS))
 TEST_EXE = tests.out
 
 # compile / link flags
@@ -38,7 +39,7 @@ tests: $(TEST_OBJ)
 %.o: %.cpp $(TEST_DEPS)
 	$(CXX) -I ./content -c $(CXX_FLAGS) $< -o $@
 
-tests/main.o: tests/main.cpp $(TEST_DEPS)
+tests/main.o: tests/main.cpp tests/tests.hpp $(TEST_DEPS)
 	$(CXX) -c $(CXX_FLAGS) $< -o $@
 
 clean: cleantests cleanlatex
