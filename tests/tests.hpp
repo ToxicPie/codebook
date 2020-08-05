@@ -5,6 +5,8 @@ namespace math {
 }
 
 namespace numeric {
+    void llmul_test(int);
+    void reduction_test(int);
     void fft_test(int);
     void ntt_test(int);
 }
