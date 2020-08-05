@@ -16,24 +16,21 @@ namespace _crt {
 
 namespace math {
     void crt_test(int count) {
-        randint rand(0, 1e9);
+        randint rand_ans(1, 1e18);
+        randint rand_mod(1, 1e9);
         for(int i = 1; i <= count; i++) {
-            ll a, b, m, n;
-            do {
-                m = rand();
-                n = rand();
-                a = rand();
-                b = rand();
-            } while((a - b) % __gcd(m, n) != 0);
+            ll ans = rand_ans(), m = rand_mod(), n = rand_mod();
+            ll a = ans % m, b = ans % n;
             ll x = _crt::crt(a, m, b, n);
-            if(!(x % m == (a % m) && x % n == (b % n))) {
+            if(!(x % m == a && x % n == b)) {
                 stringstream ss;
                 ss << "Test case " << i << ": ";
                 ss << "a = " << a << ", ";
                 ss << "m = " << m << ", ";
                 ss << "b = " << b << ", ";
-                ss << "n = " << n << ", ";
-                ss << "x = " << x << "";
+                ss << "n = " << n << "; ";
+                ss << "Expected " << ans << ", ";
+                ss << "found " << x << "";
                 throw wrong_answer_error(ss.str());
             }
         }
