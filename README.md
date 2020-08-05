@@ -27,7 +27,7 @@ Here is a list of dependencies:
 
 - GNU Make
 - A TeX distribution, preferably `texlive`
-- [Fira Code](https://github.com/tonsky/FiraCode) and [Noto Sans CJK](https://www.google.com/get/noto/) fonts
+- [Fira Mono](http://mozilla.github.io/Fira/) and [Noto Sans CJK](https://www.google.com/get/noto/) fonts
 - Python 2.6+/3.x and the Pygments package
 
 ### Testing

@@ -16,7 +16,6 @@
 \RequirePackage[xetex, pdfusetitle]{hyperref}
 \RequirePackage{minted}
 
-
 % package options
 \newif\ifchinese\chinesefalse
 \DeclareOption{chinese}{\chinesetrue}
@@ -33,13 +32,13 @@
 
 \ifmono
     \setmainfont[
-        ItalicFont={Fira Code Medium},
-        BoldItalicFont={Fira Code Bold}
-    ]{Fira Code Medium}
-    \setmonofont{Fira Code Medium}
+        ItalicFont={Fira Mono Medium},
+        BoldItalicFont={Fira Mono Bold}
+    ]{Fira Mono Medium}
+    \setmonofont{Fira Mono Medium}
 \else
     \setmainfont{Fira Sans}
-    \setmonofont{Fira Code Medium}
+    \setmonofont{Fira Mono Medium}
 \fi
 
 
@@ -49,13 +48,13 @@
 \setlength{\textheight}{720pt}
 \setlength{\footskip}{20pt}
 \setlength{\voffset}{-55pt}
-\setlength{\textwidth}{545pt}
+\setlength{\textwidth}{555pt}
 \setlength{\marginparsep}{0pt}
 \setlength{\marginparwidth}{0pt}
 \setlength{\marginparpush}{0pt}
 \setlength{\oddsidemargin}{0pt}
 \setlength{\evensidemargin}{0pt}
-\setlength{\hoffset}{-42pt}
+\setlength{\hoffset}{-45pt}
 \setlength{\columnsep}{15pt}
 \setlength{\columnseprule}{0pt}
 
@@ -73,11 +72,11 @@
 
 
 % define C++ code highlighting
-\newmintedfile[cppfile]{cpp}{
-    tabsize=2
-}
 \setminted{
-    tabsize=2
+    tabsize=2,
+    mathescape=true
+}
+\newmintedfile[cppfile]{cpp}{
 }
 
 
