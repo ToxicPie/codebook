@@ -2,7 +2,6 @@ int legendre(Mod a) {
 	if (a == 0) return 0;
 	return (a ^ ((a.MOD - 1) / 2)) == 1 ? 1 : -1;
 }
-// O(log^2(p)) worst, O(log(p)) most of the time
 Mod sqrt(Mod a) {
 	assert(legendre(a) != -1);  // no solution
 	ll p = a.MOD, s = p - 1;
