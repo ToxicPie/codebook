@@ -72,6 +72,10 @@ struct assertion_error : public std::runtime_error {
     assertion_error(const std::string& what_arg);
 };
 
+struct test_skipped_error : public std::runtime_error {
+    test_skipped_error(const std::string& what_arg);
+};
+
 // custom assert that throws
 void assert(const bool& val);
 

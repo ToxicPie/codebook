@@ -25,6 +25,9 @@ wrong_answer_error::wrong_answer_error(const std::string& what_arg)
 assertion_error::assertion_error(const std::string& what_arg)
     : std::runtime_error(what_arg) {}
 
+test_skipped_error::test_skipped_error(const std::string& what_arg)
+    : std::runtime_error(what_arg) {}
+
 void assert(const bool& val) {
     if(!val) throw assertion_error(
         "something unexpected happened in the templates"
@@ -41,6 +44,9 @@ void run_test(std::string name, test_func test, int count) {
         std::cout << "\033[32mAccepted: \033[0m";
         std::cout << count << " cases, ";
         std::cout << time_used << "ms\n";
+    } catch(test_skipped_error& e) {
+        std::cout << "\033[34mTests Skipped: \033[0m";
+        std::cout << e.what() << "\n";
     } catch(wrong_answer_error& e) {
         std::cout << "\033[31mWrong Answer: \033[0m";
         std::cout << e.what() << "\n";
