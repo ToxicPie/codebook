@@ -10,3 +10,7 @@ namespace numeric {
     void fft_test(int);
     void ntt_test(int);
 }
+
+namespace graph {
+    void dinic_test(int);
+}
