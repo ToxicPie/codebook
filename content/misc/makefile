@@ -4,9 +4,8 @@
 	ulimit -s unlimited && ./$<
 
 p%: p%.cpp
-	g++ -std=gnu++17 -Wall -Wextra -Wshadow \
-	-fsanitize=address -fsanitize=undefined \
-	-o $@ $<
+	g++ -o $@ $< -std=gnu++17 -Wall -Wextra -Wshadow \
+	-fsanitize=address -fsanitize=undefined
 
 init:
 	for i in a b c d e f g h; do \
