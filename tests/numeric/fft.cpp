@@ -18,8 +18,9 @@ namespace _fft {
 
 namespace numeric {
     using is_equal::is_equal;
+    using _fft::Mod, _fft::MOD;
 
-    ostream& operator<<(ostream& o, const _fft::Mod& m) {
+    ostream& operator<<(ostream& o, const Mod& m) {
         o << (ll)m;
         return o;
     }
@@ -90,24 +91,22 @@ namespace numeric {
     }
 
     void ntt_test(int count) {
-        constexpr int _MOD = 998244353;
-        _fft::Mod primitive_root;
-        primitive_root.MOD = _MOD;
-        primitive_root = 3;
+        MOD = 998244353;
+        Mod primitive_root = 3;
 
         randint rand_n(1, 2000);
-        randint rand_v(0, _MOD - 1);
+        randint rand_v(0, MOD - 1);
         for(int i = 1; i <= count; i++) {
             // generate vectors
             int m = rand_n(), n = rand_n();
-            vector<_fft::Mod> a(m), b(n);
+            vector<Mod> a(m), b(n);
             for(auto &i : a) i = rand_v();
             for(auto &i : b) i = rand_v();
             auto orig_a = a, orig_b = b;
 
             // fft multiplication
             int sz = 1 << (1 + __lg(m + n));
-            vector<_fft::Mod> res(sz);
+            vector<Mod> res(sz);
             a.resize(sz, 0); _fft::NTT(a, 0, primitive_root);
             b.resize(sz, 0); _fft::NTT(b, 0, primitive_root);
             for(int i = 0; i < sz; i++) res[i] = a[i] * b[i];

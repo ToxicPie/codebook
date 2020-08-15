@@ -26,6 +26,7 @@ template<typename T> struct M {
 };
 using Mod = M<ll>;
 template<>ll Mod::MOD = 1000000007;
+ll &MOD = Mod::MOD;
 
 /* Safe primes
  * 21673, 26497, 22621, 21817, 28393, 26821, 30181, 22093

@@ -1,10 +1,10 @@
 int legendre(Mod a) {
 	if (a == 0) return 0;
-	return (a ^ ((a.MOD - 1) / 2)) == 1 ? 1 : -1;
+	return (a ^ ((MOD - 1) / 2)) == 1 ? 1 : -1;
 }
 Mod sqrt(Mod a) {
 	assert(legendre(a) != -1);  // no solution
-	ll p = a.MOD, s = p - 1;
+	ll p = MOD, s = p - 1;
 	if (a == 0) return 0;
 	if (p == 2) return 1;
 	if (p % 4 == 3) return a ^ ((p + 1) / 4);
