@@ -58,6 +58,8 @@
 \setlength{\columnsep}{15pt}
 \setlength{\columnseprule}{0pt}
 
+\setlength{\parindent}{0pt}
+
 \titlespacing\section
 {0pt}{8pt plus 4pt minus 2pt}{4pt plus 2pt minus 2pt}
 \titlespacing\subsection
@@ -74,7 +76,9 @@
 % define C++ code highlighting
 \setminted{
     tabsize=2,
-    mathescape=true
+    mathescape=true,
+    breaklines,
+    breakanywhere
 }
 \newmintedfile[cppfile]{cpp}{
 }

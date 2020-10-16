@@ -1,0 +1,39 @@
+- Pre-submit:
+	- Did you made a typo when copying from codebook?
+	- Test more cases if unsure.
+		- Write a naive solution and check small cases.
+	- Submit the correct file.
+- General Debugging:
+	- Read the whole problem again.
+	- Have a teammate read the problem.
+	- Have a teammate read your code.
+		- Explain you solution to them (or a rubber duck).
+	- Print the code and its output / debug output.
+	- Go to the toilet.
+- Wrong Answer:
+	- Any possible overflows?
+		- long long
+		- Try `-ftrapv` or `#pragma GCC optimize("trapv")`
+	- Did you forget to sort or unique?
+	- Generate large and worst "corner" cases.
+	- Check your `m` / `n`, `i` / `j` and `x` / `y`.
+	- Are everything initialized or reset properly?
+	- Are you sure about the STL thing you are using?
+		- Read cppreference (should be available).
+	- Print everything and run it on pen and paper.
+- Time Limit Exceeded:
+	- Calculate your time complexity again.
+	- Does the program actually end?
+		- Check for `while(v.size())` etc.
+	- Test the largest cases locally.
+	- Did you copy unnecessary stuff?
+		- e.g. pass vectors by value
+	- Is your constant factor reasonable?
+- Runtime Error:
+	- Check memory usage.
+		- Forget to clear or destroy stuff?
+	- Stack overflow?
+		- Infinite recursion?
+	- Bad pointer / array access?
+		- Try `-fsanitize=address` and `-fstack-protector`
+	- Divide / mod by zero?

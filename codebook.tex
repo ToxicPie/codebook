@@ -2,30 +2,49 @@
 
 \usepackage[mono]{codebookpkg}
 
-\team{NCTU\_A}{National Chiao Tung University}
+\team{NCTU\_a}{National Chiao Tung University}
 \codetheme{default}
 
 \begin{document}
 
-\fontsize{7.7pt}{9.7pt}\selectfont
+\fontsize{7.2pt}{9pt}\selectfont
 
 \tableofcontents
+\newpage
 
 \section{Misc}
+    \subsection{Debug List}
+        \inputminted{md}{content/misc/debug-list.txt}
     \subsection{Makefile}
         \inputminted{makefile}{content/misc/makefile}
     \subsection{SplitMix64}
         \cppfile{content/misc/splitmix64.cpp}
+    \subsection{Random}
+        \cppfile{content/misc/random.cpp}
     \subsection{Changing Stack Size}
         \cppfile{content/misc/stack-size.cpp}
     \subsection{Bit Twiddling}
         \cppfile{content/misc/bit-hacks.cpp}
+    \subsection{Floating Point Comparison}
+        \cppfile{content/misc/epsilon.cpp}
     \subsection{Floating Point Binary Search}
         \cppfile{content/misc/float-binary-search.cpp}
+    \subsection{Mo's Algorithm on Tree}
+        \cppfile{content/misc/mo-tree.cpp}
+    \subsection{Longest Increasing Subsequence}
+        \cppfile{content/misc/lis.cpp}
+    \subsection{Aliens Trick}
+        \cppfile{content/misc/aliens.cpp}
 
 \section{Data Structures}
     \subsection{GNU PBDS}
         \cppfile{content/ds/pbds.cpp}
+    \subsection{Segment Tree}
+        \cppfile{content/ds/segtree.cpp}
+    \subsection{Link-cut Tree}
+        \cppfile{content/ds/lct.cpp}
+    \subsection{Heavy-Light Decomposition}
+        \cppfile{content/ds/hld.cpp}
 
 \section{Math}
     \subsection{Number Theory}
@@ -35,30 +54,141 @@
             \cppfile{content/math/number-theory/extgcd.cpp}
         \subsubsection{Chinese Remainder}
             \cppfile{content/math/number-theory/crt.cpp}
+        \subsubsection{Sieve}
+            \cppfile{content/math/number-theory/sieve.cpp}
         \subsubsection{Miller-Rabin}
             \cppfile{content/math/number-theory/miller-rabin.cpp}
+        \subsubsection{Pollard's Rho}
+            \cppfile{content/math/number-theory/pollard-rho.cpp}
         \subsubsection{Tonelli-Shanks}
             \cppfile{content/math/number-theory/tonelli-shanks.cpp}
         \subsubsection{Baby-Step Giant-Step}
             \cppfile{content/math/number-theory/bsgs.cpp}
+        \subsubsection{Multiplicative Function Sum}
+            \cppfile{content/math/number-theory/djs.cpp}
+    \subsection{Combinatorics}
+        \subsubsection{De Brujin Sequence}
+            \cppfile{content/math/combinatorics/de-brujin.cpp}
+        \subsubsection{Multinomial}
+            \cppfile{content/math/combinatorics/multinomial.cpp}
+    \subsection{Theorems}
+        \input{content/math/theorem.tex}
 
 \section{Numeric}
     \subsection{long long Multiplication}
         \cppfile{content/numeric/ll-mul.cpp}
     \subsection{Barrett Reduction}
         \cppfile{content/numeric/barrett-reduction.cpp}
+    \subsection{Polynomial Interpolation}
+        \cppfile{content/numeric/interpolation.cpp}
     \subsection{Fast Fourier Transform}
         \cppfile{content/numeric/fft.cpp}
+    \subsection{Fast Walsh-Hadamard Transform}
+        \cppfile{content/numeric/fwht.cpp}
+    \subsection{FFT Convolution}
+        \cppfile{content/numeric/fftc.cpp}
     \subsection{Linear Recurrence}
         \subsubsection{Calculation}
             \cppfile{content/numeric/linear-recurrence.cpp}
         \subsubsection{Berlekamp-Massey}
             \cppfile{content/numeric/berlekamp-massey.cpp}
+        \subsubsection{Composite Modulus Recurrence}
+            \cppfile{content/numeric/min25-rec.cpp}
+    \subsection{Matrix Determinant}
+        \cppfile{content/numeric/det.cpp}
+    \subsection{Matrix Inverse}
+        \cppfile{content/numeric/inverse.cpp}
+    \subsection{Linear Equations}
+        \cppfile{content/numeric/linear-eq.cpp}
+    \subsection{Simplex}
+        \cppfile{content/numeric/simplex.cpp}
 
 \section{Graph}
+    \subsection{Modeling}
+        \input{content/graph/model.tex}
     \subsection{Flow}
         \subsubsection{Dinic}
             \cppfile{content/graph/flow/dinic.cpp}
+        \subsubsection{Gomory-Hu Tree}
+            \cppfile{content/graph/flow/gomory-hu.cpp}
+        \subsubsection{Global Minimum Cut}
+            \cppfile{content/graph/flow/sw.cpp}
+        \subsubsection{Min Cost Max Flow}
+            \cppfile{content/graph/flow/mcmf.cpp}
+    \subsection{Matching}
+        \subsubsection{Kuhn-Munkres}
+            \cppfile{content/graph/matching/km.cpp}
+        \subsubsection{Bipartite Minimum Vertex Cover}
+            \cppfile{content/graph/matching/min-bi-cover.cpp}
+        \subsubsection{Maximum General Matching}
+            \cppfile{content/graph/matching/max-general.cpp}
+        \subsubsection{Min Weight Perfect Matching}
+            \cppfile{content/graph/matching/min-weight-general.cpp}
+        \subsubsection{Stable Marriage}
+            \cppfile{content/graph/matching/marriage.cpp}
+    \subsection{Centroid Decomposition}
+        \cppfile{content/graph/centroid-decomposition.cpp}
+    \subsection{Minimum Mean Cycle}
+        \cppfile{content/graph/min-mean-cycle.cpp}
+    \subsection{Bellman-Ford}
+        \cppfile{content/graph/bellman-ford.cpp}
+    \subsection{Directed Minimum Spanning Tree}
+        \cppfile{content/graph/dmst.cpp}
+    \subsection{Maximum Clique}
+        \cppfile{content/graph/clique.cpp}
+    \subsection{Tarjan}
+        \subsection{Strongly Connected Components}
+            \cppfile{content/graph/tarjan-scc.cpp}
+        \subsection{Articulation Point}
+            \cppfile{content/graph/tarjan-ap.cpp}
+        \subsection{Bridge}
+            \cppfile{content/graph/tarjan-b.cpp}
+    \subsection{2-SAT}
+        \cppfile{content/graph/2sat.cpp}
+    \subsection{Kosaraju SCC}
+        \cppfile{content/graph/kosaraju.cpp}
+    \subsection{Dominator Tree}
+        \cppfile{content/graph/dominator-tree.cpp}
+    \subsection{Biconnected Components}
+        \cppfile{content/graph/bcc.cpp}
+    \subsection{Edge BCC}
+        \cppfile{content/graph/edge-bcc.cpp}
+    \subsection{Manhattan MST}
+        \cppfile{content/graph/manhattan-mst.cpp}
+    \subsection{Notes}
+        \inputminted{text}{content/graph/notes.txt}
+
+\section{Geometry}
+    \subsection{Basic 2D}
+        \cppfile{content/geometry/basic-2d.cpp}
+    \subsection{Angle}
+        \cppfile{content/geometry/angle.cpp}
+    \subsection{Closest Pair}
+        \cppfile{content/geometry/closest-pair.cpp}
+    \subsection{Minimum Enclosing Circle}
+        \cppfile{content/geometry/min-circle.cpp}
+    \subsection{Half Plane Intersection}
+        \cppfile{content/geometry/half-plane.cpp}
+    \subsection{Delaunay Triangulation}
+        \cppfile{content/geometry/delaunay.cpp}
+    \subsection{Spherical Coordinates}
+        \cppfile{content/geometry/spherical.cpp}
+    \subsection{Quaternion}
+        \cppfile{content/geometry/quaternion.cpp}
+    \subsection{3D Convex Hull}
+        \cppfile{content/geometry/3d-hull.cpp}
+
+\section{Strings}
+    \subsection{Z-value}
+        \cppfile{content/strings/z-value.cpp}
+    \subsection{Manacher}
+        \cppfile{content/strings/manacher.cpp}
+    \subsection{Minimum Rotation}
+        \cppfile{content/strings/min-rotation.cpp}
+    \subsection{Aho-Corasick}
+        \cppfile{content/strings/ahocorasick.cpp}
+    \subsection{Suffix Array}
+        \cppfile{content/strings/suffix-array.cpp}
 
 
 \end{document}
