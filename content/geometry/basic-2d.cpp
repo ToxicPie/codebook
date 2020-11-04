@@ -1,26 +1,28 @@
-template<typename T> struct pt {
-	T x, y;
-	pt(T x, T y) : x(x), y(y) {}
-	pt operator-() const { return {-x, -y}; }
-	pt operator+(const pt& a) const {return {x+a.x, y+a.y}; }
-	pt operator-(const pt& a) const {return {x-a.x, y-a.y}; }
-	pt operator*(const T& t)  const {return {x*t, y*t}; }
-	friend T abs2(pt a) { return a.x * a.x + a.y * a.y; }
-	friend T len(pt a) { return sqrt(abs2(a)); }
-	friend T dot(pt a, pt b){ return a.x * b.x + a.y * b.y; }
-	friend T cross(pt a, pt b){return a.x * b.y - b.x * a.y;}
-	friend T cross(pt a, pt b, pt o){return cross(a-o, b-o);}
-};
+using T = long long;
+using pt = pair<T, T>;
+#define x first
+#define y second
+
+pt operator-(pt a) { return { -a.x, -a.y }; }
+pt operator+(pt a, pt b) {return { a.x + b.x, a.y + b.y};}
+pt operator-(pt a, pt b) {return { a.x - b.x, a.y - b.y};}
+pt operator*(pt a, T t) { return { a.x * t, a.y * t }; }
+T abs2(pt a) { return a.x * a.x + a.y * a.y; }
+T len(pt a) { return sqrt(abs2(a)); }
+T dot(pt a, pt b) { return a.x * b.x + a.y * b.y; }
+T cross(pt a, pt b) { return a.x * b.y - b.x * a.y; }
+T cross(pt a, pt b, pt o) { return cross(a - o, b - o); }
 
 // if segment AB and CD intersects
-bool intersects(point a, point b, point c, point d) {
+// for a nondegenrate version, change > to >=
+bool intersects(pt a, pt b, pt c, pt d) {
 	if(cross(b, c, a) * cross(b, d, a) > 0) return false;
 	if(cross(d, a, c) * cross(d, b, c) > 0) return false;
 	return true;
 }
-// the intersect point of lines AB and CD
-point intersect(point a, point b, point c, point d) {
-	T x = cross(b, c, a), y = cross(b, d, a);
+// the intersect pt of lines AB and CD
+pt intersect(pt a, pt b, pt c, pt d) {
+	auto x = cross(b, c, a), y = cross(b, d, a);
 	if(x == y) {
 	// if(abs(x, y) < 1e-8) {
 		// is parallel

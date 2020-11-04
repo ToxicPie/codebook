@@ -1,3 +1,4 @@
+// if there are multi-edges, then they are not bridges
 void dfs(int x, int p) {
 	tin[x] = low[x] = ++t;
 	st.push(x);

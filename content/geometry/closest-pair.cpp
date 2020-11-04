@@ -2,6 +2,8 @@ vector<pll> p;  // sort by x first!
 bool cmpy(const pll& a, const pll& b) const {
 	return a.y < b.y;
 }
+ll sq(ll x) { return x * x; }
+// returns (minimum dist)^2 in [l, r)
 ll solve(int l, int r) {
 	if (r - l <= 1) return 1e18;
 	int m = (l + r) / 2;

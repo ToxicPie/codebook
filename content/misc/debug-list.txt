@@ -1,5 +1,5 @@
 - Pre-submit:
-	- Did you made a typo when copying from codebook?
+	- Did you make a typo when copying a template?
 	- Test more cases if unsure.
 		- Write a naive solution and check small cases.
 	- Submit the correct file.
@@ -12,8 +12,12 @@
 	- Go to the toilet.
 - Wrong Answer:
 	- Any possible overflows?
-		- long long
+		- > `__int128` ?
 		- Try `-ftrapv` or `#pragma GCC optimize("trapv")`
+	- Floating point errors?
+		- > `long double` ?
+		- turn off math optimizations
+		- check for `==`, `>=`, `acos(1.000000001)`, etc.
 	- Did you forget to sort or unique?
 	- Generate large and worst "corner" cases.
 	- Check your `m` / `n`, `i` / `j` and `x` / `y`.
@@ -24,16 +28,17 @@
 - Time Limit Exceeded:
 	- Calculate your time complexity again.
 	- Does the program actually end?
-		- Check for `while(v.size())` etc.
+		- Check for `while(q.size())` etc.
 	- Test the largest cases locally.
-	- Did you copy unnecessary stuff?
+	- Did you do unnecessary stuff?
 		- e.g. pass vectors by value
+		- e.g. `memset` for every test case
 	- Is your constant factor reasonable?
 - Runtime Error:
 	- Check memory usage.
 		- Forget to clear or destroy stuff?
+		- > `vector::shrink_to_fit()`
 	- Stack overflow?
-		- Infinite recursion?
 	- Bad pointer / array access?
-		- Try `-fsanitize=address` and `-fstack-protector`
-	- Divide / mod by zero?
+		- Try `-fsanitize=address`
+	- Division by zero? NaN's?

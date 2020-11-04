@@ -1,9 +1,7 @@
-const ll MAXN = 1000000;
+constexpr ll MAXN = 1000000;
 bitset<MAXN> is_prime;
 vector<ll> primes;
-ll mpf[MAXN];
-ll phi[MAXN];
-ll mu[MAXN];
+ll mpf[MAXN], phi[MAXN], mu[MAXN];
 
 void sieve() {
 	is_prime.set();
@@ -22,9 +20,9 @@ void sieve() {
 			mpf[i * p] = p;
 			mu[i * p] = -mu[i];
 			if(i % p == 0)
-				phi[i*p] = phi[i] * p, mu[i*p] = 0;
+				phi[i * p] = phi[i] * p, mu[i * p] = 0;
 			else
-				phi[i*p] = phi[i] * (p - 1);
+				phi[i * p] = phi[i] * (p - 1);
 		}
 	}
 }
