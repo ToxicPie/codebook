@@ -1,0 +1,18 @@
+Let $M_1 = (E, \mathcal{I}_1), M_2 = (E, \mathcal{I}_2)$ be matroids.
+We want to find a set $S \in \mathcal{I}_1 \cap \mathcal{I}_2$ with maximum cardinality.
+
+Start with $S = \varnothing$. Repeat the following while feasible:
+\begin{enumerate}
+    \item Let $Y_1 = \{ x \not\in S \mid S + x \in I_1 \}$ and $Y_2 = \{ x \not\in S \mid S + x \in I_2 \}$.
+    \item If $Y_1 \cap Y_2 \neq \varnothing$, we can choose any $x \in Y_1 \cap Y_2$ and add $x$ to $S$, then go back to step 1.
+    \item Build a directed bipartite graph. For each $x \in S, y \in E \backslash S$:
+        \begin{itemize}
+            \item $x \rightarrow y$ iff $S - x + y \in Y_1$.
+            \item $x \leftarrow y$ iff $S - x + y \in Y_2$.
+        \end{itemize}
+    \item Find a augmenting path from $Y_1$ to $Y_2$ without shortcuts (using BFS), then set $S$ to $S \Delta P$ for where $P$ is the set of vertices on the path.
+\end{enumerate}
+
+To find the maximum weighted $S$:
+For each $x \in S$, assign weight $w(x)$ to vertex $x$, and for each $y \in E \backslash S$, assign weight $-w(y)$ to vertex $y$.
+Then on step 4, find the minimum weighted path from $Y_1$ to $Y_2$ (using Bellman-Ford) instead, and if there are multiple, choose the one with the least edges.
