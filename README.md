@@ -1,6 +1,6 @@
 # ICPC Codebook for Team NCTU_A
 
-### **IMPORTANT NOTICE**: This codebook is not complete (in fact, not anywhere near completion). Do not clone this repository. **ETA is early September, 2020.**
+## **IMPORTANT NOTICE**: This repository is no longer being maintained. Please go to https://github.com/toxicpie/nacl instead.
 
 
 
